@@ -1,0 +1,10 @@
+
+public_headers
+{
+	stb_image.h
+}
+
+sources
+{
+	stb_image.cpp
+}
