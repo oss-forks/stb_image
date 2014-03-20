@@ -1,4 +1,6 @@
 
+license "stbi-1.33 - public domain JPEG/PNG reader - http://nothings.org/stb_image.c"
+
 public_headers
 {
 	stb_image.h
