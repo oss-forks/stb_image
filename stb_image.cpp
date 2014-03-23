@@ -2840,14 +2840,17 @@ static unsigned char *do_png(png *p, int *x, int *y, int *n, int req_comp)
       if (req_comp && req_comp != p->s->img_out_n) {
          result = convert_format(result, p->s->img_out_n, req_comp, p->s->img_x, p->s->img_y);
          p->s->img_out_n = req_comp;
-         if (result == NULL) return result;
+         if (result == NULL) goto exit;
       }
       *x = p->s->img_x;
       *y = p->s->img_y;
       if (n) *n = p->s->img_n;
    }
+   exit: if (p->out)
    free(p->out);      p->out      = NULL;
+   if (p->expanded)
    free(p->expanded); p->expanded = NULL;
+   if (p->idata)
    free(p->idata);    p->idata    = NULL;
 
    return result;
