@@ -3389,6 +3389,12 @@ static stbi_uc *tga_load(stbi *s, int *x, int *y, int *comp, int req_comp)
             trans_data[2] = raw_data[0];
             trans_data[3] = raw_data[3];
             break;
+         default:
+            trans_data[0] = 0;
+            trans_data[1] = 0;
+            trans_data[2] = 0;
+            trans_data[3] = 0;
+            break;
          }
          //   clear the reading flag for the next pixel
          read_next_pixel = 0;
