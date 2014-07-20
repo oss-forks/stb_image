@@ -4356,7 +4356,7 @@ static float *hdr_load(stbi *s, int *x, int *y, int *comp, int req_comp)
          len <<= 8;
          len |= get8(s);
          if (len != width) { free(hdr_data); free(scanline); return epf("invalid decoded scanline length", "corrupt HDR"); }
-         if (scanline == NULL) { scanline = (stbi_uc *) malloc(width * 4); if (!scanline) return epf("outofmem", "Out of memory"); }
+         if (scanline == NULL) { scanline = (stbi_uc *) malloc(width * 4); if (!scanline) { free(hdr_data); return epf("outofmem", "Out of memory"); } }
             
          for (k = 0; k < 4; ++k) {
             i = 0;
